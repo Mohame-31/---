@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- أضف رابط Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="🎉 عيد فطر مبارك من القلب إلى القلب 🎉">
+    <meta property="og:description" content="تهنئة خاصة بمناسبة العيد، اضغط لمشاهدة بطاقة التهنئة التفاعلية المميزة!">
+    <meta property="og:image" content="icon.jpg">
+    <meta property="og:url" content="https://yourdomain.com/eid-page">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="تهنئة بعيد الفطر المبارك 🕌">
+    <meta name="twitter:description" content="انقر لترى أجمل تهنئة تفاعلية للعيد مع تأثيرات مميزة!">
+    <meta name="twitter:image" content="icon.jpg">
+    <title>عيد فطر مبارك</title>
+    <link href="icon.ico" rel="icon" type="image/x-icon"/>
+    <style>
+        /* شاشة البداية */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease-out;
+        }
+        .share-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .share-btn {
+            background: none;
+            border: none;
+            color: #FFD700;
+            font-size: 1.8em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.2);
+            color: #FF8C00;
+        }
+                .copied-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFD700;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: none;
+            animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .start-btn {
+            padding: 25px 50px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #FFD700, #FF8C00);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.6);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(255, 140, 0, 0.8);
+        }
+
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        /* تنسيق الصفحة الرئيسية */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('background.png') no-repeat center center/cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.5) rotateY(90deg);
+            animation: reveal 1.5s ease-out forwards;
+            position: relative;
+            transition: transform 0.4s ease-in-out;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #FFD700, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite alternate;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 1.3em;
+        }
+
+        @keyframes reveal {
+            0% { opacity: 0; transform: scale(0.5) rotateY(90deg); }
+            50% { opacity: 0.7; transform: scale(1.1) rotateY(-10deg); }
+            100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FFD700; }
+            to { text-shadow: 0 0 20px #FF8C00, 0 0 30px #FF4500; }
+        }
+
+        /* تأثيرات العد التنازلي */
+        .countdown {
+            font-size: 8em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            margin: 30px 0;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .eid-moon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+  <!-- رسالة النسخ -->
+    <div class="copied-msg">تم نسخ الرابط!</div>
+    <!-- شاشة البداية -->
+    <div id="loading-screen">
+        <div class="eid-moon">🌙</div>
+        <button class="start-btn">ابدأ الاحتفال</button>
+    </div>
+
+    <!-- مشغل الموسيقى -->
+    <audio id="bg-music" src="Mesut_Kurtis_ft_Maher_Zain-Eidun_Saeed.mp3" loop></audio>
+
+    <!-- المحتوى الأساسي -->
+    <div class="container">
+              <!-- زر المشاركة مع Font Awesome -->
+        <div class="share-container">
+            <button class="share-btn" title="مشاركة الرابط">
+                <i class="fas fa-share"></i>
+            </button>
+        </div>
+        <h1>عيد فطر مبارك!</h1>
+        <p>تقبل الله منا ومنكم صالح الأعمال، وجعل أيامكم مليئة بالسعادة والفرح.</p>
+        <p>كل عام وأنتم بخير، وكل عام وأنتم إلى الله أقرب</p>
+        <p class="signature">مع أطيب التمنيات، <strong>محمد</strong> ✨</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loadingScreen = document.getElementById("loading-screen");
+            const startBtn = document.querySelector('.start-btn');
+            const bgMusic = document.getElementById("bg-music");
+            
+            // تحسين تجربة المستخدم للجوال
+            let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                startBtn.style.padding = "20px 40px";
+                startBtn.style.fontSize = "2em";
+            }
+
+            startBtn.addEventListener('click', function() {
+                // إخفاء الزر مع تأثير
+                this.style.transform = "scale(0)";
+                this.style.opacity = "0";
+                
+                // إنشاء عنصر العد التنازلي
+                const countdownElement = document.createElement('div');
+                countdownElement.className = 'countdown';
+                countdownElement.textContent = '3';
+                loadingScreen.appendChild(countdownElement);
+                
+                // بدء العد التنازلي
+                let count = 2;
+                const countdownInterval = setInterval(() => {
+                    if (count > 0) {
+                        countdownElement.textContent = count;
+                        count--;
+                    } else {
+                        clearInterval(countdownInterval);
+                        countdownElement.textContent = '!';
+                        
+                        // إخفاء شاشة التحميل بعد التأخير
+                        setTimeout(() => {
+                            loadingScreen.style.opacity = '0';
+                            
+                            // تشغيل الموسيقى بعد التأخير
+                            setTimeout(() => {
+                                loadingScreen.style.display = 'none';
+                                
+                                // محاولة تشغيل الموسيقى تلقائيًا بعد تفاعل المستخدم
+                                const playPromise = bgMusic.play();
+                                
+                                if (playPromise !== undefined) {
+                                    playPromise.catch(error => {
+                                        // إظهار زر تشغيل إذا فشل التشغيل التلقائي
+                                        const playBtn = document.createElement('button');
+                                        playBtn.textContent = 'تشغيل الموسيقى';
+                                        playBtn.style.cssText = `
+                                            padding: 10px 20px;
+                                            background: #FF8C00;
+                                            color: white;
+                                            border: none;
+                                            border-radius: 5px;
+                                            margin-top: 20px;
+                                            cursor: pointer;
+                                        `;
+                                        playBtn.addEventListener('click', () => {
+                                            bgMusic.play();
+                                            playBtn.remove();
+                                        });
+                                        document.querySelector('.container').appendChild(playBtn);
+                                    });
+                                }
+                                
+                                bgMusic.playbackRate = 1.5;
+                            }, 300);
+                        }, 500);
+                    }
+                }, 800);
+            });
+        });
+                // كود المشاركة المعدل
+        document.querySelector('.share-btn').addEventListener('click', async () => {
+            const shareData = {
+                title: 'عيد فطر مبارك',
+                text: 'تهنئة بمناسبة عيد الفطر المبارك',
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    await navigator.clipboard.writeText(window.location.href);
+                    const msg = document.querySelector('.copied-msg');
+                    msg.style.display = 'block';
+                    setTimeout(() => msg.style.display = 'none', 2000);
+                }
+            } catch (err) {
+                console.error('فشلت المشاركة:', err);
+            }
+        });
+    </script>
+</body>
+</html>
